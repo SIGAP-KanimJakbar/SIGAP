@@ -91,7 +91,17 @@
   color: #000;
 }
 </style>
+<style>
 body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:
+    linear-gradient(rgba(244,247,251,0.90),rgba(244,247,251,0.90)),
+    url("assets/latar.png") center center / cover fixed;
+  color:#17324d;
+}
+  .splash-sub{
+  font-size:17px;
 }
 
 header{
@@ -288,13 +298,6 @@ footer{
   box-shadow:0 15px 45px rgba(11,79,138,.16);
   animation:splashIn .7s ease both;
 }
-  .splash-photo{
-  width:240px;
-  max-width:70%;
-  height:auto;
-  display:block;
-  margin:0 auto 10px;
-}
 .splash-logo{
   width:82px;
   height:72px;
@@ -386,36 +389,14 @@ footer{
 <!-- ===== LAYAR PEMBUKA SIGAP ===== -->
 <div id="splashSIGAP">
   <div class="splash-box">
+    <img src="assets/logo-sigap.jpg" class="splash-logo" alt="Logo SIGAP">
 
- <div class="splash-welcome">
-<img
-  src="assets/a_clean_cutout_transparent_background_portrait_ima.png"
-  class="splash-photo"
-  alt="Pengembang SIGAP dengan gestur permintaan maaf"
->
+    <div class="splash-brand">SIGAP</div>
+    <div class="splash-sub">
+      Sistem Informasi Gerakan Bahasa Isyarat Pelayanan
+    </div>
 
-  <h1 class="splash-title">
-    Selamat Datang di SIGAP
-  </h1>
-
-  <p class="splash-description">
-    Panduan Bahasa Isyarat untuk Pelayanan Paspor
-  </p>
-
-  <div class="splash-pantun">
-    <p>
-      Pergi ke kantor membawa map,<br>
-      Singgah sebentar mencari informasi.<br>
-      Jika ada yang kurang tepat di dalam SIGAP,<br>
-      Mohon maaf dan terima kasih atas pengertiannya.
-    </p>
-  </div>
-
-  <button class="splash-button" onclick="show('home')">
-    MULAI SIGAP
-  </button>
-
-</div>
+    <div class="splash-hand" aria-label="Bahasa isyarat">🤟</div>
 
     <h1 class="splash-title">Selamat Datang di SIGAP</h1>
 
@@ -435,7 +416,7 @@ footer{
     </div>
 
     <button class="splash-start" onclick="mulaiSIGAP()">
-     &nbsp; MULAI SIGAP &nbsp; →
+      🤟 &nbsp; MULAI SIGAP &nbsp; →
     </button>
 
     <div class="splash-footer">

@@ -1040,10 +1040,11 @@ function render(q=''){
 
         }
 
-        if(x.video){
+        if (x.video && x.video.trim() !== "") {
 
-          video.src = x.video;
+          video.src = new URL(x.video.trim(), document.baseURI).href;
           video.style.display = 'block';
+          video.load();
 
         }
 

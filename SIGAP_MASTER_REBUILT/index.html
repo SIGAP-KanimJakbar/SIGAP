@@ -273,114 +273,23 @@ footer{
   padding:25px;
 }
 
-/* ===== LAYAR PEMBUKA SIGAP ===== */
-#splashSIGAP{
-  position:fixed;
-  inset:0;
-  z-index:10000;
-  overflow:auto;
-  background:
-    linear-gradient(rgba(244,247,251,.94),rgba(244,247,251,.97)),
-    url("assets/latar.png") center/cover;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:22px;
-  box-sizing:border-box;
-}
-.splash-box{
-  width:min(680px,100%);
-  text-align:center;
-  background:rgba(255,255,255,.96);
-  border:1px solid #dbe5ef;
-  border-radius:28px;
-  padding:28px 20px 24px;
-  box-shadow:0 15px 45px rgba(11,79,138,.16);
-  animation:splashIn .7s ease both;
-}
-.splash-logo{
-  width:82px;
-  height:72px;
-  object-fit:contain;
-  margin-bottom:4px;
-}
-.splash-brand{
-  font-size:42px;
-  font-weight:800;
-  letter-spacing:2px;
-  color:#0b4f8a;
-}
-.splash-sub{
-  color:#173f67;
-  font-weight:bold;
-  font-size:14px;
-  line-height:1.45;
-}
-.splash-hand{
-  font-size:82px;
-  line-height:1;
-  margin:20px 0 10px;
-  animation:handWave 1.8s ease-in-out infinite;
-}
-.splash-title{
-  color:#0b4f8a;
-  font-size:34px;
-  margin:8px 0;
-  animation:textUp .8s .25s ease both;
-}
-.splash-desc{
-  color:#52677b;
-  font-size:15px;
-  line-height:1.5;
-  margin:0 auto 16px;
-}
-.splash-pantun{
-  background:#eaf4fc;
-  border-radius:18px;
-  padding:16px 14px;
-  color:#174d7c;
-  line-height:1.65;
-  font-size:14px;
-  margin:14px auto 20px;
-  max-width:560px;
-  animation:textUp .8s .45s ease both;
-}
-.splash-qr-note{
-  color:#64748b;
-  font-size:12px;
-  margin-bottom:12px;
-}
-.splash-start{
-  border:0;
-  background:#0b4f8a;
-  color:#fff;
-  padding:14px 28px;
-  border-radius:30px;
-  font-size:15px;
-  font-weight:bold;
-  cursor:pointer;
-  box-shadow:0 7px 18px rgba(11,79,138,.25);
-  transition:.2s;
-}
-.splash-start:hover{transform:translateY(-2px);background:#083e6d;}
-.splash-footer{
-  margin-top:18px;
-  color:#64748b;
-  font-size:11px;
-}
-@keyframes splashIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
-@keyframes textUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-@keyframes handWave{
-  0%,100%{transform:rotate(-4deg) translateY(0)}
-  50%{transform:rotate(4deg) translateY(-6px)}
-}
-@media(max-width:480px){
-  .splash-box{padding:22px 14px}
-  .splash-brand{font-size:34px}
-  .splash-hand{font-size:68px}
-  .splash-title{font-size:28px}
-}
-
+/* ===== LAYAR PEMBUKA SIGAP - DESAIN BARU ===== */
+#splashSIGAP{position:fixed;inset:0;z-index:10000;overflow:auto;display:flex;align-items:center;justify-content:center;padding:22px;box-sizing:border-box;background:linear-gradient(rgba(8,43,75,.72),rgba(8,43,75,.78)),url("assets/background-paspor.jpg") center/cover no-repeat}
+.splash-box{width:min(720px,100%);text-align:center;background:rgba(255,255,255,.96);border:1px solid rgba(255,255,255,.9);border-radius:30px;padding:34px 22px 30px;box-shadow:0 20px 55px rgba(0,0,0,.30);animation:splashIn .75s ease both;box-sizing:border-box}
+.splash-title{color:#0b4f8a;font-size:42px;line-height:1.15;margin:0 0 22px;font-weight:800;animation:textUp .8s .1s ease both}
+.splash-photo-wrap{width:220px;height:250px;margin:0 auto 20px;position:relative;perspective:900px;animation:photoFloat 3.2s ease-in-out infinite}
+.splash-photo-wrap::before{content:"";position:absolute;inset:10px 8px 0;border-radius:28px;background:linear-gradient(135deg,#0b4f8a,#1f75b8,#d9ecfa);transform:rotateY(-10deg) rotateX(5deg) translateZ(-18px);box-shadow:0 18px 30px rgba(11,79,138,.30)}
+.splash-photo{position:relative;width:190px;height:220px;object-fit:cover;object-position:center top;border-radius:28px;border:6px solid white;box-shadow:0 18px 30px rgba(0,0,0,.25),0 0 0 2px rgba(11,79,138,.18);transform:rotateY(-6deg) rotateX(3deg);transition:transform .35s ease;background:#fff}
+.splash-photo-wrap:hover .splash-photo{transform:rotateY(6deg) rotateX(-3deg) scale(1.03)}
+.splash-desc{color:#173f67;font-size:19px;line-height:1.5;font-weight:700;margin:0 auto 20px;max-width:590px;animation:textUp .8s .25s ease both}
+.splash-pantun{background:linear-gradient(135deg,#eaf4fc,#f7fbff);border:2px solid #cfe5f6;border-radius:22px;padding:20px 18px;color:#174d7c;line-height:1.75;font-size:17px;font-weight:600;margin:18px auto 24px;max-width:600px;box-shadow:0 8px 20px rgba(11,79,138,.10);animation:textUp .8s .4s ease both}
+.splash-start{border:0;background:linear-gradient(135deg,#0b4f8a,#176fae);color:#fff;padding:17px 42px;min-width:230px;border-radius:35px;font-size:18px;font-weight:800;letter-spacing:.4px;cursor:pointer;box-shadow:0 9px 22px rgba(11,79,138,.30);transition:transform .2s,box-shadow .2s,background .2s;animation:textUp .8s .55s ease both}
+.splash-start:hover{transform:translateY(-3px) scale(1.02);background:linear-gradient(135deg,#083e6d,#0b5f98);box-shadow:0 13px 28px rgba(11,79,138,.35)}
+.splash-footer{margin-top:20px;color:#64748b;font-size:12px}
+@keyframes splashIn{from{opacity:0;transform:translateY(22px) scale(.98)}to{opacity:1;transform:none}}
+@keyframes textUp{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:none}}
+@keyframes photoFloat{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-9px) rotate(1deg)}}
+@media(max-width:480px){#splashSIGAP{padding:14px}.splash-box{padding:27px 14px 24px}.splash-title{font-size:32px}.splash-photo-wrap{width:190px;height:220px}.splash-photo{width:165px;height:195px}.splash-desc{font-size:16px}.splash-pantun{font-size:15px;padding:17px 13px}.splash-start{width:100%;min-width:0;font-size:17px}}
 </style>
 </head>
 
@@ -389,42 +298,21 @@ footer{
 <!-- ===== LAYAR PEMBUKA SIGAP ===== -->
 <div id="splashSIGAP">
   <div class="splash-box">
-    <img src="assets/logo-sigap.jpg" class="splash-logo" alt="Logo SIGAP">
-
-    <div class="splash-brand">SIGAP</div>
-    <div class="splash-sub">
-      Sistem Informasi Gerakan Bahasa Isyarat Pelayanan
-    </div>
-
-    <div class="splash-hand" aria-label="Bahasa isyarat">🤟</div>
-
     <h1 class="splash-title">Selamat Datang di SIGAP</h1>
-
-    <p class="splash-desc">
-      Panduan Bahasa Isyarat untuk Pelayanan Paspor
-    </p>
-
+    <div class="splash-photo-wrap">
+      <img src="assets/profil-sigap.jpg" class="splash-photo" alt="Pengembang SIGAP">
+    </div>
+    <p class="splash-desc">Panduan Bahasa Isyarat untuk Pelayanan Paspor</p>
     <div class="splash-pantun">
-      “Senyum ramah membuka layanan,<br>
-      Bahasa isyarat menjalin pemahaman.<br>
-      Selamat datang di SIGAP,<br>
-      Bersama wujudkan pelayanan yang mudah dipahami.”
+      🌴 Jalan-jalan membawa paspor,<br>
+      Jangan lupa senyum sebelum berangkat.<br>
+      Kalau bingung saat pelayanan paspor,<br>
+      Tenang... ada SIGAP yang siap membantu dengan semangat! 😄
     </div>
-
-    <div class="splash-qr-note">
-      Anda mengakses SIGAP melalui QR Code pelayanan.
-    </div>
-
-    <button class="splash-start" onclick="mulaiSIGAP()">
-      🤟 &nbsp; MULAI SIGAP &nbsp; →
-    </button>
-
-    <div class="splash-footer">
-      Kantor Imigrasi Kelas I Khusus Non TPI Jakarta Barat
-    </div>
+    <button class="splash-start" onclick="mulaiSIGAP()">MULAI SIGAP &nbsp; →</button>
+    <div class="splash-footer">Kantor Imigrasi Kelas I Khusus Non TPI Jakarta Barat</div>
   </div>
 </div>
-
 
 <header>
   <img src="assets/logo-sigap.jpg" class="logo-sigap" alt="Logo SIGAP">
@@ -1040,11 +928,10 @@ function render(q=''){
 
         }
 
-        if (x.video && x.video.trim() !== "") {
+        if(x.video){
 
-          video.src = new URL(x.video.trim(), document.baseURI).href;
+          video.src = x.video;
           video.style.display = 'block';
-          video.load();
 
         }
 

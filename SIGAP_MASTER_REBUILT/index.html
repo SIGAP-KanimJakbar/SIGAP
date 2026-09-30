@@ -90,6 +90,83 @@
 .profil-close:hover {
   color: #000;
 }
+
+.admin-toolbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-bottom:12px;
+  padding:12px 14px;
+  background:#f5f9fd;
+  border:1px solid #dbe5ef;
+  border-radius:14px;
+}
+.admin-toolbar > div{
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
+}
+.admin-small-btn{
+  border:1px solid #c8d8e8;
+  background:#fff;
+  color:#0b4f8a;
+  border-radius:9px;
+  padding:7px 10px;
+  cursor:pointer;
+  font-weight:700;
+}
+.admin-small-btn.danger{color:#a33a3a}
+.admin-comment{
+  border:1px solid #dbe5ef;
+  border-radius:15px;
+  padding:14px;
+  margin:10px 0;
+  background:#fff;
+}
+.admin-comment.is-read{opacity:.78}
+.admin-comment-top{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:10px;
+}
+.admin-badge{
+  display:inline-block;
+  margin-left:7px;
+  padding:3px 7px;
+  border-radius:999px;
+  background:#eaf4fc;
+  color:#0b4f8a;
+  font-size:11px;
+  font-weight:700;
+}
+.admin-comment-actions{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  flex-wrap:wrap;
+}
+.admin-comment-actions button{
+  border:1px solid #c8d8e8;
+  background:#fff;
+  color:#174d7c;
+  border-radius:8px;
+  padding:6px 9px;
+  cursor:pointer;
+}
+.admin-comment-actions button.danger{color:#a33a3a}
+.admin-status{
+  font-size:12px;
+  color:#64748b;
+  margin-right:auto;
+}
+@media(max-width:600px){
+  .admin-comment-top{flex-direction:column}
+  .admin-status{width:100%;margin-right:0}
+}
+
 </style>
 <style>
 body{
@@ -277,6 +354,60 @@ footer{
 #splashSIGAP{position:fixed;inset:0;z-index:10000;overflow:auto;background:linear-gradient(rgba(244,247,251,.96),rgba(230,240,250,.98));display:flex;align-items:center;justify-content:center;padding:22px;box-sizing:border-box}
 .splash-box{width:min(680px,100%);text-align:center;background:rgba(255,255,255,.97);border:1px solid #dbe5ef;border-radius:28px;padding:28px 20px 24px;box-shadow:0 15px 45px rgba(11,79,138,.16);animation:splashIn .7s ease both}
 .splash-logo{width:82px;height:82px;object-fit:cover;border-radius:50%;margin-bottom:8px;border:4px solid #fff;box-shadow:0 6px 18px rgba(0,0,0,.15)}
+.splash-logo{
+  transform:perspective(700px) rotateX(3deg) rotateY(-5deg);
+  filter:drop-shadow(0 12px 10px rgba(11,79,138,.22));
+  transition:transform .35s ease,filter .35s ease;
+}
+.splash-logo:hover{
+  transform:perspective(700px) rotateX(0deg) rotateY(0deg) translateY(-3px) scale(1.04);
+  filter:drop-shadow(0 16px 14px rgba(11,79,138,.28));
+}
+.help-icon{
+  width:52px;height:52px;border-radius:16px;
+  display:flex;align-items:center;justify-content:center;
+  background:#e8f2fb;color:#0b4f8a;font-size:27px;
+  margin-bottom:8px;
+}
+.help-list{display:grid;gap:10px;margin-top:12px}
+.help-option{
+  border:1px solid #dbe5ef;border-radius:14px;
+  padding:13px;background:#f8fbfe;cursor:pointer;
+}
+.help-option:hover{background:#eef6fd}
+.help-answer{
+  display:none;background:#fff;border-left:4px solid #0b4f8a;
+  padding:12px;margin-top:8px;border-radius:10px;
+  line-height:1.5;color:#52677b;
+}
+.feedback-form textarea{
+  width:100%;min-height:130px;box-sizing:border-box;
+  padding:13px;border:1px solid #dbe5ef;border-radius:12px;
+  font-family:Arial,sans-serif;font-size:14px;resize:vertical;
+}
+.feedback-form select{
+  width:100%;box-sizing:border-box;padding:13px;
+  border:1px solid #dbe5ef;border-radius:12px;font-size:14px;
+  margin:12px 0;
+}
+.feedback-form .btn{border:0;cursor:pointer}
+.feedback-status{margin-top:10px;font-size:13px;color:#18794e}
+.admin-box{
+  display:none;margin-top:14px;background:#f8fbfe;
+  border:1px solid #dbe5ef;border-radius:14px;padding:14px;
+}
+.admin-comment{
+  background:#fff;border:1px solid #e1e8ef;border-radius:12px;
+  padding:12px;margin:9px 0;line-height:1.45;
+}
+.admin-meta{font-size:11px;color:#64748b;margin-bottom:5px}
+.small-admin{
+  margin-top:16px;text-align:center;color:#94a3b8;font-size:11px;
+}
+.small-admin button{
+  border:0;background:none;color:#64748b;cursor:pointer;
+}
+
 .splash-brand{font-size:42px;font-weight:800;letter-spacing:2px;color:#0b4f8a;margin-bottom:5px}
 .splash-sub{color:#173f67;font-weight:bold;font-size:14px;line-height:1.45;margin-bottom:18px}
 .splash-hand{display:none}
@@ -310,7 +441,7 @@ footer{
       Tenang... ada SIGAP yang siap membantu dengan semangat!
     </div>
     <div class="splash-qr-note">Anda mengakses SIGAP melalui QR Code pelayanan.</div>
-    <button class="splash-start" type="button" onclick="document.getElementById('splashSIGAP').style.display='none'; window.scrollTo(0,0);">MULAI SIGAP &nbsp; →</button>
+    <button class="splash-start" type="button" onclick="mulaiSIGAP()">MULAI SIGAP &nbsp; →</button>
     <div class="splash-footer">Kantor Imigrasi Kelas I Khusus Non TPI Jakarta Barat</div>
   </div>
 </div>
@@ -375,7 +506,13 @@ footer{
     <div class="card" onclick="show('tentang')">
       <div class="icon">ℹ️</div>
       <b>Tentang SIGAP</b>
-     <p>Tujuan dan referensi</p>
+      <p>Tujuan dan referensi</p>
+    </div>
+
+    <div class="card" onclick="show('bantuan')">
+      <div class="icon">🛟</div>
+      <b>Bantuan & Masukan</b>
+      <span>Bantuan SIGAP dan komentar</span>
     </div>
 
   </div>
@@ -605,6 +742,111 @@ footer{
   <div class="note">
     <b>Catatan:</b> SIGAP bukan pengganti layanan resmi Kanim Jakarta Barat. Informasi persyaratan,
     biaya, alur, dan ketersediaan layanan dapat berubah. Selalu periksa sumber resmi sebelum mengajukan permohonan.
+  </div>
+
+</section>
+
+
+<!-- BANTUAN & MASUKAN -->
+<section id="bantuan" class="page">
+
+  <button class="back" onclick="show('home')">
+    ← Kembali
+  </button>
+
+  <h2>Bantuan & Masukan</h2>
+
+  <div class="item">
+    <div class="help-icon">🛟</div>
+    <h3>Bantuan SIGAP</h3>
+    <p>
+      Pilih masalah yang sedang dialami. SIGAP akan menampilkan langkah
+      bantuan yang dapat dicoba terlebih dahulu.
+    </p>
+
+    <div class="help-list">
+
+      <div class="help-option" onclick="toggleBantuan('b1')">
+        <b>🔹 SIGAP tidak terbuka atau berhenti</b>
+        <div id="b1" class="help-answer">
+          Coba muat ulang halaman. Jika masih bermasalah, tutup browser
+          lalu buka kembali tautan SIGAP. Pastikan koneksi internet tersedia.
+        </div>
+      </div>
+
+      <div class="help-option" onclick="toggleBantuan('b2')">
+        <b>🔹 Video bahasa isyarat tidak muncul</b>
+        <div id="b2" class="help-answer">
+          Buka kembali kosakata tersebut dan tekan tombol putar video.
+          Jika tetap tidak muncul, muat ulang halaman. Jika masalah berlanjut,
+          kirimkan masukan melalui formulir di bawah dengan menyebutkan nama kosakatanya.
+        </div>
+      </div>
+
+      <div class="help-option" onclick="toggleBantuan('b3')">
+        <b>🔹 Kosakata yang dicari belum tersedia</b>
+        <div id="b3" class="help-answer">
+          Gunakan fitur pencarian terlebih dahulu. Jika belum tersedia,
+          buka Kamus SIBI melalui tautan resmi yang tersedia di SIGAP.
+        </div>
+      </div>
+
+      <div class="help-option" onclick="toggleBantuan('b4')">
+        <b>🔹 Informasi SIGAP perlu diperbaiki</b>
+        <div id="b4" class="help-answer">
+          Kirimkan masukan melalui formulir di bawah. Tuliskan bagian yang
+          perlu diperbaiki agar admin dapat memeriksanya.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="item feedback-form">
+    <div class="help-icon">💬</div>
+    <h3>Masukan / Komentar</h3>
+    <p>
+      Sampaikan komentar, saran, atau laporan masalah mengenai SIGAP.
+      Komentar pengguna tidak ditampilkan pada halaman umum.
+    </p>
+
+    <input id="feedbackNama" type="text" placeholder="Nama (opsional)">
+
+    <select id="feedbackJenis">
+      <option value="Masukan">Masukan</option>
+      <option value="Saran">Saran</option>
+      <option value="Laporan masalah">Laporan masalah</option>
+      <option value="Kosakata">Kosakata</option>
+      <option value="Video">Video</option>
+    </select>
+
+    <textarea id="feedbackPesan" placeholder="Tulis masukan atau komentar Anda..."></textarea>
+
+    <button class="btn" type="button" onclick="kirimMasukan()">
+      Kirim Masukan
+    </button>
+
+    <div id="feedbackStatus" class="feedback-status"></div>
+  </div>
+
+  <div class="note">
+    <b>Privasi:</b> komentar tidak ditampilkan sebagai komentar publik.
+    Pada versi GitHub Pages ini, data masukan disimpan di browser perangkat
+    untuk kebutuhan demo. Untuk penyimpanan terpusat yang benar-benar hanya
+    dapat dibaca admin, SIGAP perlu dihubungkan ke database/backend dengan autentikasi admin.
+  </div>
+
+  <div class="small-admin">
+    <button type="button" onclick="bukaAdminSIGAP()">Akses Admin</button>
+  </div>
+
+  <div id="adminBoxSIGAP" class="admin-box">
+    <h3>🔐 Panel Admin SIGAP</h3>
+    <p style="font-size:13px;color:#64748b;">
+      Panel ini hanya untuk melihat masukan yang tersimpan pada browser ini.
+    </p>
+    <div id="adminKomentar"></div>
+    <button class="btn" type="button" onclick="keluarAdminSIGAP()">Tutup Panel Admin</button>
   </div>
 
 </section>
@@ -1001,6 +1243,89 @@ render();
 
 </script>
 <script>
+
+function toggleBantuan(id){
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.style.display = el.style.display === "block" ? "none" : "block";
+}
+
+function kirimMasukan(){
+  const nama = document.getElementById("feedbackNama").value.trim() || "Anonim";
+  const jenis = document.getElementById("feedbackJenis").value;
+  const pesan = document.getElementById("feedbackPesan").value.trim();
+  const status = document.getElementById("feedbackStatus");
+
+  if(!pesan){
+    status.style.color = "#b42318";
+    status.textContent = "Masukan belum diisi.";
+    return;
+  }
+
+  const data = JSON.parse(localStorage.getItem("sigapMasukan") || "[]");
+
+  data.push({
+    nama:nama,
+    jenis:jenis,
+    pesan:pesan,
+    waktu:new Date().toLocaleString("id-ID")
+  });
+
+  localStorage.setItem("sigapMasukan", JSON.stringify(data));
+
+  document.getElementById("feedbackNama").value = "";
+  document.getElementById("feedbackPesan").value = "";
+
+  status.style.color = "#18794e";
+  status.textContent = "Masukan berhasil disimpan. Terima kasih.";
+}
+
+function bukaAdminSIGAP(){
+  const password = prompt("Masukkan kata sandi admin SIGAP:");
+
+  if(password !== "SIGAPADMIN"){
+    alert("Kata sandi admin salah.");
+    return;
+  }
+
+  const box = document.getElementById("adminBoxSIGAP");
+  box.style.display = "block";
+  tampilkanKomentarAdmin();
+}
+
+function tampilkanKomentarAdmin(){
+  const target = document.getElementById("adminKomentar");
+  const data = JSON.parse(localStorage.getItem("sigapMasukan") || "[]");
+
+  if(!data.length){
+    target.innerHTML = '<p style="color:#64748b;">Belum ada masukan.</p>';
+    return;
+  }
+
+  target.innerHTML = data.map((x, i) => `
+    <div class="admin-comment">
+      <div class="admin-meta">
+        #${i + 1} · ${x.waktu} · ${x.jenis}
+      </div>
+      <b>${escapeHTML(x.nama)}</b>
+      <div style="margin-top:6px;">${escapeHTML(x.pesan)}</div>
+    </div>
+  `).join("");
+}
+
+function escapeHTML(text){
+  return String(text)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+}
+
+function keluarAdminSIGAP(){
+  document.getElementById("adminBoxSIGAP").style.display = "none";
+}
+
 function toggleTujuanSIGAP() {
     const isi = document.getElementById("isiTujuanSIGAP");
     const panah = document.getElementById("panahTujuanSIGAP");

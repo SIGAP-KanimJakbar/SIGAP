@@ -1183,8 +1183,6 @@ function render(q=''){
 
 }
 
-
-
 function mulaiSIGAP(){
   const splash = document.getElementById("splashSIGAP");
   splash.style.transition = "opacity .35s ease";
@@ -1195,20 +1193,54 @@ function mulaiSIGAP(){
   }, 350);
 }
 
-function show(id){
+let riwayatHalaman = [];
 
+function show(id, dariTombolKembali = false){
+
+  const halamanAktif = document.querySelector('.page.active');
+
+  // Simpan halaman yang sedang dibuka
+  // sebelum pindah ke halaman berikutnya
+  if (
+    halamanAktif &&
+    halamanAktif.id !== id &&
+    !dariTombolKembali
+  ) {
+    riwayatHalaman.push(halamanAktif.id);
+  }
+
+  // Sembunyikan semua halaman
   document
     .querySelectorAll('.page')
     .forEach(x =>
       x.classList.remove('active')
     );
 
-  document
-    .getElementById(id)
-    .classList.add('active');
+  // Tampilkan halaman yang dipilih
+  const halamanTujuan = document.getElementById(id);
 
-  scrollTo(0,0);
+  if (!halamanTujuan) return;
 
+  halamanTujuan.classList.add('active');
+
+  window.scrollTo(0,0);
+}
+
+
+function kembaliSIGAP(){
+
+  if (riwayatHalaman.length > 0) {
+
+    const halamanSebelumnya =
+      riwayatHalaman.pop();
+
+    show(halamanSebelumnya, true);
+
+  } else {
+
+    show('home', true);
+
+  }
 }
 
 

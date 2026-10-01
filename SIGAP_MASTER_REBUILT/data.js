@@ -13,7 +13,7 @@ window.SIGAP_WORDS = [
     description: "Digunakan untuk proses pendaftaran.",
     status: "Referensi SIBI — cek sumber resmi",
     image: "",
-    video: "assets/daftar.mp4",
+    video: "assets/Daftar.mp4",
     source: "Kamus SIBI"
   },
 
@@ -66,7 +66,7 @@ window.SIGAP_WORDS = [
     word: "Kartu Keluarga",
     description: "Istilah dokumen persyaratan.",
     status: "Perlu pengecekan/validasi konteks",
-    image: "assets/Kartu Keluarga.jpg",
+    image: "assets/kartu keluarga.jpg",
     video: "",
     source: ""
   },
@@ -75,7 +75,7 @@ window.SIGAP_WORDS = [
     word: "Dokumen",
     description: "Istilah umum berkas persyaratan.",
     status: "Perlu pengecekan/validasi konteks",
-    image: "assets/Dokumen.jpg",
+    image: "assets/dokumen.jpg",
     video: "",
     source: ""
   },

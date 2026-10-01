@@ -22,7 +22,7 @@ window.SIGAP_WORDS = [
     description: "Digunakan saat menjelaskan jadwal kedatangan.",
     status: "Referensi SIBI — cek sumber resmi",
     image: "",
-    video: "assets/jadwal.mp4",
+    video: "assets/Jadwal.mp4",
     source: "Kamus SIBI"
   },
 

@@ -351,8 +351,8 @@ footer{
 }
 
 /* ===== LAYAR PEMBUKA SIGAP ===== */
-#splashSIGAP{position:fixed;inset:0;z-index:10000;overflow:auto;background:linear-gradient(rgba(235,245,252,.82),rgba(220,237,249,.86));display:flex;align-items:center;justify-content:center;padding:22px;box-sizing:border-box}
-.splash-bg-logo{position:absolute;left:50%;top:50%;width:min(1100px,96vw);height:min(1100px,96vh);transform:translate(-50%,-50%);object-fit:contain;object-position:center;opacity:.20;filter:drop-shadow(0 18px 28px rgba(11,79,138,.20));pointer-events:none;z-index:0}
+#splashSIGAP{position:fixed;inset:0;z-index:10000;overflow:auto;background:#ffffff;display:flex;align-items:center;justify-content:center;padding:22px;box-sizing:border-box}
+.splash-bg-logo{position:absolute;inset:0;width:100%;height:100%;transform:none;object-fit:cover;object-position:center;opacity:1;filter:none;pointer-events:none;z-index:0}
 .splash-box > *{position:relative;z-index:1}
 .splash-box::before{content:"";position:absolute;inset:0;background:url("assets/logo-sigap.jpg") center/72% auto no-repeat;opacity:.16;filter:brightness(.55) contrast(1.15);pointer-events:none;z-index:0}
 .splash-box{position:relative;z-index:1;width:min(680px,100%);text-align:center;background:rgba(255,255,255,.82);border:1px solid rgba(219,229,239,.92);border-radius:28px;padding:28px 20px 24px;box-shadow:0 15px 45px rgba(11,79,138,.16);animation:splashIn .7s ease both}
@@ -431,7 +431,7 @@ footer{
 
 <!-- ===== LAYAR PEMBUKA SIGAP ===== -->
 <div id="splashSIGAP">
-  <img src="assets/logo-sigap.jpg" class="splash-bg-logo" alt="">
+  <img src="assets/kantor-jakbar.jpg" class="splash-bg-logo" alt="">
   <div class="splash-box">
     <img src="assets/logo-sigap.jpg" class="splash-logo" alt="Logo SIGAP">
     <div class="splash-brand">SIGAP</div>

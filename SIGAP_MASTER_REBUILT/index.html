@@ -167,6 +167,36 @@
   .admin-status{width:100%;margin-right:0}
 }
 
+
+/* PERBAIKAN RESPONSIF HP - TIDAK MENGUBAH LAYAR PEMBUKA */
+@media (max-width:480px){
+  /* Header utama */
+  header .logo-sigap{
+    width:85px;
+    height:85px;
+  }
+
+  header .brand{
+    font-size:34px;
+    line-height:1.1;
+  }
+
+  header .sub{
+    font-size:12px;
+    line-height:1.45;
+  }
+
+  /* Menu utama agar tidak berdesakan */
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  /* Lebih aman untuk background pada browser HP */
+  body{
+    background-attachment:scroll;
+  }
+}
+
 </style>
 <style>
 body{
@@ -182,10 +212,14 @@ body{
 }
 
 header{
+  position:sticky;
+  top:0;
+  z-index:1000;
   background:#0b4f8a;
   color:white;
   text-align:center;
   padding:22px 18px;
+  box-shadow:0 3px 10px rgba(0,0,0,.15);
 }
 
 .logo-sigap{
@@ -351,11 +385,8 @@ footer{
 }
 
 /* ===== LAYAR PEMBUKA SIGAP ===== */
-#splashSIGAP{position:fixed;inset:0;z-index:10000;overflow:auto;background:linear-gradient(rgba(235,245,252,.82),rgba(220,237,249,.86));display:flex;align-items:center;justify-content:center;padding:22px;box-sizing:border-box}
-.splash-bg-logo{position:absolute;left:50%;top:50%;width:min(1100px,96vw);height:min(1100px,96vh);transform:translate(-50%,-50%);object-fit:contain;object-position:center;opacity:.20;filter:drop-shadow(0 18px 28px rgba(11,79,138,.20));pointer-events:none;z-index:0}
-.splash-box > *{position:relative;z-index:1}
-.splash-box::before{content:"";position:absolute;inset:0;background:url("assets/logo-sigap.jpg") center/72% auto no-repeat;opacity:.16;filter:brightness(.55) contrast(1.15);pointer-events:none;z-index:0}
-.splash-box{position:relative;z-index:1;width:min(680px,100%);text-align:center;background:rgba(255,255,255,.82);border:1px solid rgba(219,229,239,.92);border-radius:28px;padding:28px 20px 24px;box-shadow:0 15px 45px rgba(11,79,138,.16);animation:splashIn .7s ease both}
+#splashSIGAP{position:fixed;inset:0;z-index:10000;overflow:auto;background:linear-gradient(rgba(244,247,251,.96),rgba(230,240,250,.98));display:flex;align-items:center;justify-content:center;padding:22px;box-sizing:border-box}
+.splash-box{width:min(680px,100%);text-align:center;background:rgba(255,255,255,.97);border:1px solid #dbe5ef;border-radius:28px;padding:28px 20px 24px;box-shadow:0 15px 45px rgba(11,79,138,.16);animation:splashIn .7s ease both}
 .splash-logo{width:82px;height:82px;object-fit:cover;border-radius:50%;margin-bottom:8px;border:4px solid #fff;box-shadow:0 6px 18px rgba(0,0,0,.15)}
 .splash-logo{
   transform:perspective(700px) rotateX(3deg) rotateY(-5deg);
@@ -412,18 +443,18 @@ footer{
 }
 
 .splash-brand{font-size:42px;font-weight:800;letter-spacing:2px;color:#0b4f8a;margin-bottom:5px}
-.splash-sub{display:inline-block;background:#0b4f8a;color:#fff;font-weight:normal;font-size:12px;line-height:1.3;padding:7px 18px;border-radius:20px;margin:2px auto 14px;box-shadow:0 4px 10px rgba(11,79,138,.18);letter-spacing:.2px}
+.splash-sub{color:#173f67;font-weight:bold;font-size:14px;line-height:1.45;margin-bottom:18px}
 .splash-hand{display:none}
-.splash-title{color:#0b4f8a;font-size:40px;font-weight:900;font-family:Georgia,serif;letter-spacing:1px;text-shadow:0 3px 8px rgba(0,0,0,.25);margin:18px 0 8px;animation:textUp .8s .25s ease both}
+.splash-title{color:#0b4f8a;font-size:34px;margin:18px 0 8px;animation:textUp .8s .25s ease both}
 .splash-desc{color:#52677b;font-size:15px;line-height:1.5;margin:0 auto 16px}
-.splash-pantun{display:block;background:#0b4f8a;border:2px solid #0b4f8a;border-radius:22px;padding:18px 24px;color:#fff;line-height:1.7;font-size:16px;font-weight:normal;font-family:Georgia,serif;letter-spacing:.3px;text-shadow:0 2px 4px rgba(0,0,0,.25);margin:14px auto 20px;max-width:560px;box-shadow:0 5px 14px rgba(11,79,138,.22);animation:textUp .8s .45s ease both}
+.splash-pantun{background:#eaf4fc;border-radius:18px;padding:16px 14px;color:#174d7c;line-height:1.65;font-size:14px;margin:14px auto 20px;max-width:560px;animation:textUp .8s .45s ease both}
 .splash-qr-note{color:#64748b;font-size:12px;margin-bottom:12px}
 .splash-start{border:0;background:#0b4f8a;color:#fff;padding:14px 28px;border-radius:30px;font-size:15px;font-weight:bold;cursor:pointer;box-shadow:0 7px 18px rgba(11,79,138,.25);transition:transform .2s ease,background .2s ease}
 .splash-start:hover{transform:translateY(-2px);background:#083e6d}.splash-start:active{transform:scale(.97)}
 .splash-footer{margin-top:18px;color:#64748b;font-size:11px}
 @keyframes splashIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 @keyframes textUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-@media(max-width:480px){#splashSIGAP{padding:14px}.splash-bg-logo{width:96vw;height:88vh;opacity:.17}.splash-box{padding:22px 14px}.splash-logo{width:72px;height:72px}.splash-brand{font-size:34px}.splash-title{font-size:28px;margin-top:20px}.splash-desc{font-size:14px}.splash-pantun{font-size:13px;padding:14px 10px}.splash-start{width:90%}}
+@media(max-width:480px){#splashSIGAP{padding:14px}.splash-box{padding:22px 14px}.splash-logo{width:72px;height:72px}.splash-brand{font-size:34px}.splash-title{font-size:28px;margin-top:20px}.splash-desc{font-size:14px}.splash-pantun{font-size:13px;padding:14px 10px}.splash-start{width:90%}}
 </style>
 </head>
 
@@ -431,18 +462,17 @@ footer{
 
 <!-- ===== LAYAR PEMBUKA SIGAP ===== -->
 <div id="splashSIGAP">
-  <img src="assets/logo-sigap.jpg" class="splash-bg-logo" alt="">
   <div class="splash-box">
     <img src="assets/logo-sigap.jpg" class="splash-logo" alt="Logo SIGAP">
     <div class="splash-brand">SIGAP</div>
-    <div class="splash-sub">Sistem Informasi Gerakan Bahasa Isyarat Pelayanan</div>
+    <div class="splash-sub">Panduan Bahasa Isyarat untuk Pelayanan Paspor</div>
     <h1 class="splash-title">Selamat Datang di SIGAP</h1>
     <p class="splash-desc">Panduan Bahasa Isyarat untuk Pelayanan Paspor</p>
     <div class="splash-pantun">
-      Jalan-jalan Membawa Paspor,<br>
-      Jangan Lupa Senyum Sebelum Berangkat.<br>
-      Kalau Bingung Saat Pelayanan Paspor,<br>
-      Tenang... Ada SIGAP Yang Siap Membantu Dengan Semangat!
+      Jalan-jalan membawa paspor,<br>
+      Jangan lupa senyum sebelum berangkat.<br>
+      Kalau bingung saat pelayanan paspor,<br>
+      Tenang... ada SIGAP yang siap membantu dengan semangat!
     </div>
     <div class="splash-qr-note">Anda mengakses SIGAP melalui QR Code pelayanan.</div>
     <button class="splash-start" type="button" onclick="mulaiSIGAP()">MULAI SIGAP &nbsp; →</button>
@@ -542,7 +572,7 @@ footer{
 <!-- ALUR -->
 <section id="alur" class="page">
 
-  <button class="back" onclick="kembaliSIGAP()">
+  <button class="back" onclick="show('home')">
     ← Kembali
   </button>
 
@@ -624,7 +654,7 @@ footer{
 <!-- PERSYARATAN -->
 <section id="syarat" class="page">
 
-  <button class="back" onclick="kembaliSIGAP()">
+  <button class="back" onclick="show('home')">
     ← Kembali
   </button>
 
@@ -670,7 +700,7 @@ footer{
 <!-- LAYANAN KEIMIGRASIAN -->
 <section id="layanan" class="page">
 
-  <button class="back" onclick="kembaliSIGAP()">
+  <button class="back" onclick="show('home')">
     ← Kembali
   </button>
 
@@ -754,7 +784,7 @@ footer{
 <!-- BANTUAN & MASUKAN -->
 <section id="bantuan" class="page">
 
-  <button class="back" onclick="kembaliSIGAP()">
+  <button class="back" onclick="show('home')">
     ← Kembali
   </button>
 
@@ -834,8 +864,10 @@ footer{
   </div>
 
   <div class="note">
-    <b>Privasi:</b> komentar tidak ditampilkan secara publik.
-
+    <b>Privasi:</b> komentar tidak ditampilkan sebagai komentar publik.
+    Pada versi GitHub Pages ini, data masukan disimpan di browser perangkat
+    untuk kebutuhan demo. Untuk penyimpanan terpusat yang benar-benar hanya
+    dapat dibaca admin, SIGAP perlu dihubungkan ke database/backend dengan autentikasi admin.
   </div>
 
   <div class="small-admin">
@@ -857,7 +889,7 @@ footer{
 <!-- KAMUS -->
 <section id="kamus" class="page">
 
-  <button class="back" onclick="kembaliSIGAP()">
+  <button class="back" onclick="show('home')">
     ← Kembali
   </button>
 
@@ -887,7 +919,7 @@ footer{
 <!-- DETAIL -->
 <section id="detail" class="page">
 
-  <button class="back" onclick="kembaliSIGAP()">
+  <button class="back" onclick="show('kamus')">
     ← Kembali ke Kamus
   </button>
 
@@ -925,7 +957,7 @@ footer{
 <!-- TENTANG -->
 <section id="tentang" class="page">
 
-  <button class="back" onclick="kembaliSIGAP()">
+  <button class="back" onclick="show('home')">
     ← Kembali
   </button>
 
@@ -938,20 +970,22 @@ footer{
 
     <div id="isiTujuanSIGAP" style="display:none;">
       <p>
-       SIGAP bertujuan menyediakan media informasi digital yang membantu pemohon, khususnya pengguna bahasa isyarat, memahami informasi dan tahapan pelayanan paspor di Kantor Imigrasi Kelas I Khusus Non TPI Jakarta Barat.
+        SIGAP dikembangkan sebagai media digital untuk membantu pemohon tunarungu atau pengguna bahasa isyarat dalam memahami informasi dan tahapan pelayanan paspor di Kantor Imigrasi Kelas I Khusus Non TPI Jakarta Barat. Informasi disajikan secara sederhana dan visual agar lebih mudah dipahami serta dapat membantu pengguna mengenali berbagai tahapan yang akan dilalui selama proses pelayanan paspor.
       </p>
 
       <p>
-        SIGAP menyajikan informasi mengenai alur pelayanan, kebutuhan dokumen, serta kosakata yang berkaitan dengan pelayanan paspor melalui panduan visual berupa gambar dan media pendukung lainnya.
+        SIGAP menyediakan informasi mengenai alur pelayanan paspor, kebutuhan dokumen, serta kosakata bahasa isyarat yang relevan dengan komunikasi dalam pelayanan. Pengguna dapat mencari kosakata bahasa isyarat melalui SIGAP dan memperoleh referensi tambahan melalui SIBI untuk membantu menemukan istilah atau kosakata yang belum tersedia di dalam media SIGAP.
       </p>
 
       <p>
-       SIGAP juga menyediakan pencarian kosakata dan referensi Kamus SIBI untuk membantu pengguna menemukan informasi bahasa isyarat yang relevan. Melalui penyajian informasi tersebut, SIGAP diharapkan dapat mendukung komunikasi antara petugas dan pemohon selama proses pelayanan paspor.
+        Melalui penyajian foto dan pengembangan media video bahasa isyarat, SIGAP diharapkan dapat menjadi media pendukung komunikasi antara petugas pelayanan dan pemohon tunarungu atau pengguna bahasa isyarat. Dengan demikian, SIGAP tidak hanya memberikan informasi mengenai pelayanan paspor, tetapi juga membantu menciptakan proses komunikasi yang lebih mudah dipahami dalam lingkungan pelayanan keimigrasian.
       </p>
 
       <p>
         <strong>Inti konsep SIGAP:</strong><br>
-        SIGAP adalah media informasi digital yang membantu proses pelayanan paspor melalui panduan bahasa isyarat dan informasi visual yang sederhana, khususnya untuk mendukung pemohon pengguna bahasa isyarat dalam memahami informasi dan tahapan pelayanan di Kantor Imigrasi Kelas I Khusus Non TPI Jakarta Barat.
+        Pemohon tunarungu/pengguna bahasa isyarat → memahami pelayanan paspor → mencari kosakata bahasa isyarat → menggunakan foto/video sebagai panduan → membantu komunikasi dengan petugas.
+      </p>
+    </div>
   </div>
 
 
@@ -997,34 +1031,37 @@ footer{
     </p>
 
     <p>
-      <strong>1. Akses SIGAP</strong><br>
-      Buka SIGAP melalui tautan atau QR Code yang telah disediakan.
+      <strong>1. Alur Paspor</strong><br>
+      Menampilkan tahapan pelayanan paspor secara berurutan, mulai dari
+      pendaftaran melalui M-Paspor hingga pemberian tanda terima permohonan.
     </p>
 
     <p>
-      <strong>2.Pilih Informasi pelayanan</strong><br>
-     Pada menu utama, pilih informasi yang ingin diketahui, seperti alur pelayanan paspor atau kebutuhan dokumen.
+      <strong>2. Persyaratan</strong><br>
+      Menampilkan informasi umum mengenai dokumen yang diperlukan dalam
+      pelayanan paspor serta mengarahkan pengguna ke sumber resmi Kanim
+      Jakarta Barat untuk informasi yang lebih lengkap dan terbaru.
     </p>
 
     <p>
-      <strong>3. Pilih Kosakata</strong><br>
-     Gunakan menu kosakata untuk mencari istilah yang berkaitan dengan pelayanan paspor, seperti KTP, dokumen, foto, jadwal, pembayaran, wawancara, dan istilah lainnya.
+      <strong>3. Kamus Bahasa Isyarat</strong><br>
+      Pengguna dapat mencari kosakata yang tersedia, kemudian memilih
+      kosakata untuk melihat keterangan serta foto atau video yang tersedia.
     </p>
 
     <p>
-      <strong>4. Lihat Panduan Bahasa Isyarat</strong><br>
-      Pilih kosakata yang diinginkan untuk melihat panduan visual berupa gambar atau video yang tersedia.
+      <strong>4. Layanan Keimigrasian</strong><br>
+      Menampilkan kelompok layanan keimigrasian yang dirangkum dari
+      informasi pada situs resmi Kantor Imigrasi Jakarta Barat.
     </p>
 
     <p>
-      <strong>5. Gunakan Referensi SIBI</strong><br>
-      Apabila kosakata yang dicari belum tersedia dalam SIGAP, pengguna dapat menggunakan referensi Kamus SIBI untuk mencari istilah bahasa isyarat yang relevan.
-    </p> 
-    
-    <p>
-      <strong>6. Gunakan sebagai media pendukung pelayanan</strong><br>
-      Informasi dalam SIGAP dapat digunakan sebagai media pendukung komunikasi dan pemahaman antara petugas dan pemohon selama proses pelayanan paspor.
-     </p>
+      <strong>5. Kamus SIBI Resmi</strong><br>
+      Jika kosakata yang dicari belum tersedia di SIGAP atau pengguna ingin
+      melihat referensi isyarat resmi, pengguna dapat membuka Kamus SIBI
+      melalui tautan yang tersedia.
+    </p>
+
     <p>
       <strong>Catatan tentang foto dan video bahasa isyarat:</strong><br>
       Foto atau video yang terdapat dalam SIGAP merupakan media panduan
@@ -1187,6 +1224,8 @@ function render(q=''){
 
 }
 
+
+
 function mulaiSIGAP(){
   const splash = document.getElementById("splashSIGAP");
   splash.style.transition = "opacity .35s ease";
@@ -1197,22 +1236,7 @@ function mulaiSIGAP(){
   }, 350);
 }
 
-let riwayatHalaman = [];
-
-function show(id, dariTombolKembali = false){
-
-  const halamanAktif = document.querySelector('.page.active');
-
-  if (
-    halamanAktif &&
-    halamanAktif.id !== id &&
-    !dariTombolKembali
-  ) {
-    riwayatHalaman.push({
-      id: halamanAktif.id,
-      scrollY: window.scrollY || window.pageYOffset || 0
-    });
-  }
+function show(id){
 
   document
     .querySelectorAll('.page')
@@ -1220,28 +1244,12 @@ function show(id, dariTombolKembali = false){
       x.classList.remove('active')
     );
 
-  const halamanTujuan = document.getElementById(id);
+  document
+    .getElementById(id)
+    .classList.add('active');
 
-  if (!halamanTujuan) return;
+  scrollTo(0,0);
 
-  halamanTujuan.classList.add('active');
-  window.scrollTo(0,0);
-}
-
-function kembaliSIGAP(){
-
-  if (riwayatHalaman.length === 0) {
-    show('home', true);
-    return;
-  }
-
-  const sebelumnya = riwayatHalaman.pop();
-
-  show(sebelumnya.id, true);
-
-  requestAnimationFrame(() => {
-    window.scrollTo(0, sebelumnya.scrollY || 0);
-  });
 }
 
 

@@ -364,9 +364,9 @@ footer{
 
 /* ===== LAYAR PEMBUKA SIGAP ===== */
 #splashSIGAP{position:fixed;inset:0;z-index:10000;overflow-x:hidden;overflow-y:auto;background:#dce8f3;display:flex;align-items:center;justify-content:center;padding:clamp(10px,2vw,24px);box-sizing:border-box;min-height:100vh;min-height:100svh;isolation:isolate}
-/* Foto memenuhi sisi layar; foto utama tetap utuh agar tidak memotong bagian penting. */
-#splashSIGAP::before{content:"";position:absolute;inset:-22px;z-index:0;background:url("assets/kantor-jakbar.jpg") center center/cover no-repeat;filter:blur(12px);transform:scale(1.04);opacity:.82;pointer-events:none}
-.splash-bg-logo{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center center;background:transparent;opacity:1;filter:none;pointer-events:none;z-index:0}
+/* Satu foto tajam memenuhi layar laptop maupun HP; tidak ada latar duplikat yang buram. */
+#splashSIGAP::before{display:none;content:none}
+.splash-bg-logo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;background:#dce8f3;opacity:1;filter:none;pointer-events:none;z-index:0}
 .splash-box > *{position:relative;z-index:1}
 .splash-box::before{display:none}
 .splash-box{position:relative;z-index:1;width:min(560px,100%);box-sizing:border-box;text-align:center;background:rgba(255,255,255,.88);border:1px solid rgba(219,229,239,.96);border-radius:20px;padding:18px 18px 16px;margin:auto;box-shadow:0 12px 32px rgba(11,79,138,.16);animation:splashIn .7s ease both}
@@ -444,7 +444,7 @@ footer{
   .brand{font-size:25px}
   .sub{font-size:10px;max-width:320px}
   #splashSIGAP{padding:10px;align-items:flex-start}
-  .splash-bg-logo{width:100%;height:100%;object-fit:contain;object-position:center center;opacity:.46}
+  .splash-bg-logo{width:100%;height:100%;object-fit:cover;object-position:center center;opacity:1}
   .splash-box{padding:15px 12px 13px;border-radius:16px}
   .splash-logo{width:48px;height:48px}
   .splash-brand{font-size:27px}
@@ -1293,30 +1293,24 @@ function render(q='', targetId='words'){
 
 function mulaiSIGAP(){
   const splash = document.getElementById("splashSIGAP");
-  const loading = document.getElementById("splashLoading");
-  const tombol = splash.querySelector(".splash-start");
-  if (!splash || !loading || splash.dataset.memulai === "ya") return;
+  if (!splash || splash.dataset.memulai === "ya") return;
   splash.dataset.memulai = "ya";
-  if (tombol) tombol.disabled = true;
-  loading.style.display = "flex";
 
-  const foto = splash.querySelector(".splash-bg-logo");
-  const tungguFoto = foto && !foto.complete
-    ? new Promise(resolve => {
-        foto.addEventListener("load", resolve, {once:true});
-        foto.addEventListener("error", resolve, {once:true});
-      })
-    : Promise.resolve();
-  const jedaSingkat = new Promise(resolve => setTimeout(resolve, 2200));
+  // Hilangkan kartu pembuka agar selama jeda hanya foto latar yang terlihat.
+  const kartu = splash.querySelector(".splash-box");
+  const loading = document.getElementById("splashLoading");
+  if (kartu) kartu.style.display = "none";
+  if (loading) loading.style.display = "none";
 
-  Promise.all([tungguFoto, jedaSingkat]).then(() => {
+  // Pertahankan latar tajam selama 2,2 detik, lalu masuk ke halaman utama.
+  setTimeout(() => {
     splash.style.transition = "opacity .4s ease";
     splash.style.opacity = "0";
     setTimeout(() => {
       splash.style.display = "none";
-      window.scrollTo(0,0);
+      window.scrollTo(0, 0);
     }, 400);
-  });
+  }, 2200);
 }
 
 let riwayatHalaman = [];

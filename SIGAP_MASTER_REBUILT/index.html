@@ -955,13 +955,20 @@ footer{
       <p>
         <strong>Inti konsep SIGAP:</strong><br>
         SIGAP adalah media informasi digital yang membantu proses pelayanan paspor melalui panduan bahasa isyarat dan informasi visual yang sederhana, khususnya untuk mendukung pemohon pengguna bahasa isyarat dalam memahami informasi dan tahapan pelayanan di Kantor Imigrasi Kelas I Khusus Non TPI Jakarta Barat.
-  </div>
+      </p>
+    </div>
 
 
-  <!-- PROFIL PENGE SIGAP -->
-  <div class="item">
+  
+<!-- PROFIL PENGEMBANG SIGAP -->
+<div class="item">
 
-    <h3>👤Pengembang SIGAP</h3>
+  <h3 onclick="togglePengembangSIGAP()" style="cursor:pointer;">
+    👤 Pengembang SIGAP
+    <span id="panahPengembangSIGAP">▼</span>
+  </h3>
+
+  <div id="isiPengembangSIGAP" style="display:none;">
 
     <div class="profil-card" onclick="bukaProfilSIGAP()">
 
@@ -975,13 +982,13 @@ footer{
         Jelfriansa Zagoto
       </div>
 
-      <div class="profil-jabatan">
-        
-      </div>
+      <div class="profil-jabatan"></div>
 
     </div>
 
   </div>
+
+</div>
 
   <!-- CARA PENGGUNAAN SIGAP -->
   <div class="item">
@@ -1202,50 +1209,54 @@ function mulaiSIGAP(){
 
 let riwayatHalaman = [];
 
-function show(id, dariTombolKembali = false){
+function show(id, dariTombolKembali = false) {
+    const halamanAktif = document.querySelector('.page.active');
 
-  const halamanAktif = document.querySelector('.page.active');
+    if (
+        halamanAktif &&
+        halamanAktif.id !== id &&
+        !dariTombolKembali
+    ) {
+        riwayatHalaman.push({
+            id: halamanAktif.id,
+            scrollY: window.scrollY || window.pageYOffset || 0
+        });
+    }
 
-  if (
-    halamanAktif &&
-    halamanAktif.id !== id &&
-    !dariTombolKembali
-  ) {
-    riwayatHalaman.push({
-      id: halamanAktif.id,
-      scrollY: window.scrollY || window.pageYOffset || 0
+    document.querySelectorAll('.page').forEach(halaman => {
+        halaman.classList.remove('active');
     });
-  }
 
-  document
-    .querySelectorAll('.page')
-    .forEach(x =>
-      x.classList.remove('active')
-    );
+    const halamanTujuan = document.getElementById(id);
 
-  const halamanTujuan = document.getElementById(id);
+    if (!halamanTujuan) return;
 
-  if (!halamanTujuan) return;
-
-  halamanTujuan.classList.add('active');
-  window.scrollTo(0,0);
+    halamanTujuan.classList.add('active');
+    window.scrollTo(0, 0);
 }
 
-function kembaliSIGAP(){
+function kembaliSIGAP() {
+    if (riwayatHalaman.length === 0) {
+        show('home', true);
+        return;
+    }
 
-  if (riwayatHalaman.length === 0) {
-    show('home', true);
-    return;
-  }
+    const sebelumnya = riwayatHalaman.pop();
 
-  const sebelumnya = riwayatHalaman.pop();
+    show(sebelumnya.id, true);
 
-  show(sebelumnya.id, true);
-
-  requestAnimationFrame(() => {
-    window.scrollTo(0, sebelumnya.scrollY || 0);
-  });
+    requestAnimationFrame(() => {
+        window.scrollTo(0, sebelumnya.scrollY || 0);
+    });
 }
+
+// Dukungan tombol Kembali Android
+history.pushState({ sigap: true }, '', location.href);
+
+window.addEventListener('popstate', function () {
+    kembaliSIGAP();
+    history.pushState({ sigap: true }, '', location.href);
+});
 
 
 document
@@ -1368,7 +1379,20 @@ function toggleTujuanSIGAP() {
     }
 }
 
-function togglePenggunaanSIGAP() {
+function togglePengembangSIGAP() {
+    const isi = document.getElementById("isiPengembangSIGAP");
+    const panah = document.getElementById("panahPengembangSIGAP");
+
+    if (isi.style.display === "none") {
+        isi.style.display = "block";
+        panah.textContent = "▲";
+    } else {
+        isi.style.display = "none";
+        panah.textContent = "▼";
+    }
+}
+  
+  function togglePenggunaanSIGAP() {
     const isi = document.getElementById("isiPenggunaanSIGAP");
     const panah = document.getElementById("panahPenggunaanSIGAP");
 

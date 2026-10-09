@@ -188,35 +188,40 @@ header{
   background:#0b4f8a;
   color:white;
   text-align:center;
-  padding:10px 18px 12px;
+  padding:7px 14px 8px;
 }
 
 .logo-sigap{
-  width:110px;
-  height:110px;
+  width:54px;
+  height:54px;
   object-fit:cover;
   border-radius:50%;
   display:block;
-  margin:0 auto 12px;
+  margin:0 auto 4px;
   background:#ffffff;
-  border:4px solid #ffffff;
+  border:2px solid #ffffff;
   box-shadow:0 4px 12px rgba(0,0,0,0.15);
 
 }
   .brand{
-  font-size:42px;
+  font-size:29px;
   font-weight:800;
-  line-height:1.1;
+  line-height:1.05;
   margin:0;
 }
 
 .sub{
-  font-size:13px;
+  display:block;
+  margin:3px auto 0;
+  font-size:11px;
+  line-height:1.35;
 }
 
 main{
+  width:100%;
   max-width:700px;
-  margin:auto;
+  box-sizing:border-box;
+  margin:0 auto;
   padding:16px;
 }
 
@@ -251,6 +256,10 @@ h2{
 .card{
   cursor:pointer;
 }
+.search-results{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:0 0 14px}
+.search-results[hidden]{display:none}
+.search-results .card{margin:0;min-width:0;overflow-wrap:anywhere}
+@media(max-width:420px){.search-results{grid-template-columns:1fr}}
 
 .icon{
   font-size:28px;
@@ -354,15 +363,16 @@ footer{
 }
 
 /* ===== LAYAR PEMBUKA SIGAP ===== */
-#splashSIGAP{position:fixed;inset:0;z-index:10000;overflow:auto;background:#ffffff;display:flex;align-items:center;justify-content:center;padding:22px;box-sizing:border-box}
+#splashSIGAP{position:fixed;inset:0;z-index:10000;overflow-x:hidden;overflow-y:auto;background:#dce8f3;display:flex;align-items:center;justify-content:center;padding:16px;box-sizing:border-box;min-height:100vh;min-height:100svh}
 .splash-bg-logo {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   transform: none;
-  object-fit: cover;
-  object-position: center 35%;
+  object-fit: contain;
+  object-position: center center;
+  background:#dce8f3;
   opacity: 1;
   filter: none;
   pointer-events: none;
@@ -370,8 +380,8 @@ footer{
 }
 .splash-box > *{position:relative;z-index:1}
 .splash-box::before{display:none}
-.splash-box{position:relative;z-index:1;width:min(680px,100%);text-align:center;background:rgba(255,255,255,.82);border:1px solid rgba(219,229,239,.92);border-radius:28px;padding:28px 20px 24px;box-shadow:0 15px 45px rgba(11,79,138,.16);animation:splashIn .7s ease both}
-.splash-logo{width:82px;height:82px;object-fit:cover;border-radius:50%;margin-bottom:8px;border:4px solid #fff;box-shadow:0 6px 18px rgba(0,0,0,.15)}
+.splash-box{position:relative;z-index:1;width:min(560px,100%);box-sizing:border-box;text-align:center;background:rgba(255,255,255,.91);border:1px solid rgba(219,229,239,.96);border-radius:20px;padding:18px 18px 16px;margin:auto;box-shadow:0 12px 32px rgba(11,79,138,.16);animation:splashIn .7s ease both}
+.splash-logo{width:58px;height:58px;object-fit:cover;border-radius:50%;margin-bottom:8px;border:4px solid #fff;box-shadow:0 6px 18px rgba(0,0,0,.15)}
 .splash-logo{
   transform:perspective(700px) rotateX(3deg) rotateY(-5deg);
   filter:drop-shadow(0 12px 10px rgba(11,79,138,.22));
@@ -426,19 +436,36 @@ footer{
   border:0;background:none;color:#64748b;cursor:pointer;
 }
 
-.splash-brand{font-size:42px;font-weight:800;letter-spacing:2px;color:#0b4f8a;margin-bottom:5px}
+.splash-brand{font-size:32px;font-weight:800;letter-spacing:2px;color:#0b4f8a;margin-bottom:5px}
 .splash-sub{display:inline-block;background:#0b4f8a;color:#fff;font-weight:normal;font-size:12px;line-height:1.3;padding:7px 18px;border-radius:20px;margin:2px auto 14px;box-shadow:0 4px 10px rgba(11,79,138,.18);letter-spacing:.2px}
 .splash-hand{display:none}
-.splash-title{color:#0b4f8a;font-size:40px;font-weight:900;font-family:Georgia,serif;letter-spacing:1px;text-shadow:0 3px 8px rgba(0,0,0,.25);margin:18px 0 8px;animation:textUp .8s .25s ease both}
+.splash-title{color:#0b4f8a;font-size:30px;font-weight:900;font-family:Georgia,serif;letter-spacing:1px;text-shadow:0 3px 8px rgba(0,0,0,.25);margin:18px 0 8px;animation:textUp .8s .25s ease both}
 .splash-desc{color:#52677b;font-size:15px;line-height:1.5;margin:0 auto 16px}
-.splash-pantun{display:block;background:#0b4f8a;border:2px solid #0b4f8a;border-radius:22px;padding:18px 24px;color:#fff;line-height:1.7;font-size:16px;font-weight:normal;font-family:Georgia,serif;letter-spacing:.3px;text-shadow:0 2px 4px rgba(0,0,0,.25);margin:14px auto 20px;max-width:560px;box-shadow:0 5px 14px rgba(11,79,138,.22);animation:textUp .8s .45s ease both}
+.splash-pantun{display:block;background:#0b4f8a;border:2px solid #0b4f8a;border-radius:16px;padding:12px 16px;color:#fff;line-height:1.55;font-size:14px;font-weight:normal;font-family:Georgia,serif;letter-spacing:.3px;text-shadow:0 2px 4px rgba(0,0,0,.25);margin:14px auto 20px;max-width:560px;box-shadow:0 5px 14px rgba(11,79,138,.22);animation:textUp .8s .45s ease both}
 .splash-qr-note{color:#64748b;font-size:12px;margin-bottom:12px}
 .splash-start{border:0;background:#0b4f8a;color:#fff;padding:14px 28px;border-radius:30px;font-size:15px;font-weight:bold;cursor:pointer;box-shadow:0 7px 18px rgba(11,79,138,.25);transition:transform .2s ease,background .2s ease}
 .splash-start:hover{transform:translateY(-2px);background:#083e6d}.splash-start:active{transform:scale(.97)}
 .splash-footer{margin-top:18px;color:#64748b;font-size:11px}
 @keyframes splashIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 @keyframes textUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-@media(max-width:480px){#splashSIGAP{padding:14px}.splash-bg-logo{width:100%;height:100%;opacity:1}.splash-box{padding:22px 14px}.splash-logo{width:72px;height:72px}.splash-brand{font-size:34px}.splash-title{font-size:28px;margin-top:20px}.splash-desc{font-size:14px}.splash-pantun{font-size:13px;padding:14px 10px}.splash-start{width:90%}}
+@media(max-width:600px){
+  header{padding:6px 12px 8px}
+  .logo-sigap{width:44px;height:44px;margin-bottom:3px}
+  .brand{font-size:25px}
+  .sub{font-size:10px;max-width:320px}
+  #splashSIGAP{padding:10px;align-items:flex-start}
+  .splash-bg-logo{width:100%;height:100%;object-fit:contain;object-position:center center}
+  .splash-box{padding:15px 12px 13px;border-radius:16px}
+  .splash-logo{width:48px;height:48px}
+  .splash-brand{font-size:27px}
+  .splash-sub{font-size:10px;padding:6px 10px;margin-bottom:8px}
+  .splash-title{font-size:24px;line-height:1.2;margin:10px 0 6px}
+  .splash-desc{font-size:13px;margin-bottom:10px}
+  .splash-pantun{font-size:12px;padding:10px 8px;margin:10px auto 12px;line-height:1.45}
+  .splash-start{width:90%;padding:11px 18px}
+  .splash-footer{margin-top:10px}
+}
+@media(max-height:650px){#splashSIGAP{align-items:flex-start}.splash-box{margin-top:auto;margin-bottom:auto}}
 </style>
 </head>
 
@@ -491,8 +518,12 @@ footer{
 
   <input
     id="search"
+    type="search"
+    autocomplete="off"
     placeholder="Cari kosakata, misalnya: jadwal"
+    aria-label="Cari kosakata bahasa isyarat"
   >
+  <div id="homeSearchResults" class="search-results" aria-live="polite" hidden></div>
 
   <h2>Menu Utama</h2>
 
@@ -532,6 +563,12 @@ footer{
       <div class="icon">🛟</div>
       <b>Bantuan & Masukan</b>
       <span>Bantuan SIGAP dan komentar</span>
+    </div>
+
+    <div class="card" onclick="show('sejarah')">
+      <div class="icon">📜</div>
+      <b>Sejarah Imigrasi</b>
+      <span>Perjalanan imigrasi Indonesia</span>
     </div>
 
   </div>
@@ -765,6 +802,35 @@ footer{
 
 </section>
 
+
+<!-- SEJARAH IMIGRASI -->
+<section id="sejarah" class="page">
+  <button class="back" onclick="kembaliSIGAP()">← Kembali</button>
+  <h2>Sejarah Imigrasi Indonesia</h2>
+  <p style="color:#64748b">Ringkasan singkat perjalanan kelembagaan imigrasi Indonesia. Untuk uraian lengkap, silakan buka sumber resmi di bawah.</p>
+
+  <div class="item">
+    <h3>📍 Masa Hindia Belanda</h3>
+    <p>Pengaturan keimigrasian di wilayah Indonesia pada masa kolonial mengikuti peraturan dan lembaga pemerintah Hindia Belanda. Sebagian aturan lama masih digunakan pada masa awal setelah kemerdekaan, sambil dilakukan penyesuaian untuk kepentingan negara Indonesia.</p>
+  </div>
+  <div class="item">
+    <h3>🇮🇩 17 Agustus 1945 — Kemerdekaan Indonesia</h3>
+    <p>Setelah Proklamasi Kemerdekaan, urusan keimigrasian menjadi bagian dari upaya negara mengelola perjalanan lintas batas, dokumen perjalanan, serta keberadaan orang asing sesuai kepentingan Indonesia yang merdeka.</p>
+  </div>
+  <div class="item">
+    <h3>🗓️ 26 Januari 1950 — Tonggak Imigrasi Nasional</h3>
+    <p>Dinas Imigrasi diserahterimakan kepada Pemerintah Indonesia. Mr. H.J. Adiwinata menjadi Kepala Jawatan Imigrasi pertama dari putra pribumi. Tanggal 26 Januari kemudian diperingati sebagai Hari Bhakti Imigrasi.</p>
+  </div>
+  <div class="item">
+    <h3>🌐 Perkembangan Layanan Modern</h3>
+    <p>Seiring perkembangan kebutuhan masyarakat dan hubungan internasional, layanan keimigrasian terus berkembang, termasuk penerbitan paspor, pelayanan visa dan izin tinggal, pemeriksaan keimigrasian, serta pengawasan dan penegakan hukum keimigrasian.</p>
+  </div>
+  <div class="item">
+    <h3>📚 Sumber Resmi</h3>
+    <p>Untuk sejarah dan informasi kelembagaan lebih lengkap, gunakan publikasi resmi Direktorat Jenderal Imigrasi.</p>
+    <a class="btn" href="https://ngurahrai.imigrasi.go.id/sejarah-imigrasi/" target="_blank" rel="noopener noreferrer">Baca Sejarah Imigrasi</a>
+  </div>
+</section>
 
 <!-- BANTUAN & MASUKAN -->
 <section id="bantuan" class="page">
@@ -1134,17 +1200,27 @@ footer{
 
 const words = window.SIGAP_WORDS || [];
 
-function render(q=''){
+function render(q='', targetId='words'){
 
-  let e = document.getElementById('words');
-
+  const e = document.getElementById(targetId);
+  if (!e) return;
   e.innerHTML = '';
+  if (targetId === 'homeSearchResults') {
+    e.hidden = !q.trim();
+    if (!q.trim()) return;
+  }
 
-  words
-    .filter(x =>
-      x.word.toLowerCase().includes(q.toLowerCase())
-    )
-    .forEach(x => {
+  const query = q.trim().toLocaleLowerCase('id-ID');
+  const hasil = words.filter(x =>
+    String(x.word || '').toLocaleLowerCase('id-ID').includes(query)
+  );
+
+  if (targetId === 'homeSearchResults' && hasil.length === 0) {
+    e.innerHTML = '<div class="item">Kosakata tidak ditemukan. Coba kata lain.</div>';
+    return;
+  }
+
+  hasil.forEach(x => {
 
       let d = document.createElement('div');
 
@@ -1273,15 +1349,9 @@ window.addEventListener('popstate', function () {
 });
 
 
-document
-  .getElementById('search')
-  .oninput = e => {
-
-    show('kamus');
-
-    render(e.target.value);
-
-  };
+document.getElementById('search').addEventListener('input', event => {
+  render(event.target.value, 'homeSearchResults');
+});
 
 
 

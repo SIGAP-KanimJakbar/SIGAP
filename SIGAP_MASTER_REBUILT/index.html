@@ -363,7 +363,8 @@ footer{
 }
 
 /* ===== LAYAR PEMBUKA SIGAP ===== */
-#splashSIGAP{position:fixed;inset:0;z-index:10000;overflow-x:hidden;overflow-y:auto;background:#dce8f3;display:flex;align-items:center;justify-content:center;padding:16px;box-sizing:border-box;min-height:100vh;min-height:100svh}
+#splashSIGAP{position:fixed;inset:0;z-index:10000;overflow-x:hidden;overflow-y:auto;background:#dce8f3;display:flex;align-items:center;justify-content:center;padding:16px;box-sizing:border-box;min-height:100vh;min-height:100svh;isolation:isolate}
+#splashSIGAP::before{content:"";position:fixed;inset:-18px;z-index:-1;background:url("assets/kantor-jakbar.jpg") center center/cover no-repeat;filter:blur(14px);transform:scale(1.04);opacity:.72}
 .splash-bg-logo {
   position: absolute;
   inset: 0;
@@ -380,7 +381,7 @@ footer{
 }
 .splash-box > *{position:relative;z-index:1}
 .splash-box::before{display:none}
-.splash-box{position:relative;z-index:1;width:min(560px,100%);box-sizing:border-box;text-align:center;background:rgba(255,255,255,.91);border:1px solid rgba(219,229,239,.96);border-radius:20px;padding:18px 18px 16px;margin:auto;box-shadow:0 12px 32px rgba(11,79,138,.16);animation:splashIn .7s ease both}
+.splash-box{position:relative;z-index:1;width:min(560px,100%);box-sizing:border-box;text-align:center;background:rgba(255,255,255,.88);border:1px solid rgba(219,229,239,.96);border-radius:20px;padding:18px 18px 16px;margin:auto;box-shadow:0 12px 32px rgba(11,79,138,.16);animation:splashIn .7s ease both}
 .splash-logo{width:58px;height:58px;object-fit:cover;border-radius:50%;margin-bottom:8px;border:4px solid #fff;box-shadow:0 6px 18px rgba(0,0,0,.15)}
 .splash-logo{
   transform:perspective(700px) rotateX(3deg) rotateY(-5deg);
@@ -454,7 +455,7 @@ footer{
   .brand{font-size:25px}
   .sub{font-size:10px;max-width:320px}
   #splashSIGAP{padding:10px;align-items:flex-start}
-  .splash-bg-logo{width:100%;height:100%;object-fit:contain;object-position:center center}
+  .splash-bg-logo{width:100%;height:100%;object-fit:contain;object-position:center center;opacity:.46}
   .splash-box{padding:15px 12px 13px;border-radius:16px}
   .splash-logo{width:48px;height:48px}
   .splash-brand{font-size:27px}

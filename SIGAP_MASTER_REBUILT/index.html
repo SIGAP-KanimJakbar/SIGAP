@@ -192,8 +192,8 @@ header{
 }
 
 .logo-sigap{
-  width:54px;
-  height:54px;
+  width:46px;
+  height:46px;
   object-fit:cover;
   border-radius:50%;
   display:block;
@@ -363,22 +363,10 @@ footer{
 }
 
 /* ===== LAYAR PEMBUKA SIGAP ===== */
-#splashSIGAP{position:fixed;inset:0;z-index:10000;overflow-x:hidden;overflow-y:auto;background:#dce8f3;display:flex;align-items:center;justify-content:center;padding:16px;box-sizing:border-box;min-height:100vh;min-height:100svh;isolation:isolate}
-#splashSIGAP::before{content:"";position:fixed;inset:-18px;z-index:-1;background:url("assets/kantor-jakbar.jpg") center center/cover no-repeat;filter:blur(14px);transform:scale(1.04);opacity:.72}
-.splash-bg-logo {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  transform: none;
-  object-fit: contain;
-  object-position: center center;
-  background:#dce8f3;
-  opacity: 1;
-  filter: none;
-  pointer-events: none;
-  z-index: 0;
-}
+#splashSIGAP{position:fixed;inset:0;z-index:10000;overflow-x:hidden;overflow-y:auto;background:#dce8f3;display:flex;align-items:center;justify-content:center;padding:clamp(10px,2vw,24px);box-sizing:border-box;min-height:100vh;min-height:100svh;isolation:isolate}
+/* Foto memenuhi sisi layar; foto utama tetap utuh agar tidak memotong bagian penting. */
+#splashSIGAP::before{content:"";position:absolute;inset:-22px;z-index:0;background:url("assets/kantor-jakbar.jpg") center center/cover no-repeat;filter:blur(12px);transform:scale(1.04);opacity:.82;pointer-events:none}
+.splash-bg-logo{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center center;background:transparent;opacity:1;filter:none;pointer-events:none;z-index:0}
 .splash-box > *{position:relative;z-index:1}
 .splash-box::before{display:none}
 .splash-box{position:relative;z-index:1;width:min(560px,100%);box-sizing:border-box;text-align:center;background:rgba(255,255,255,.88);border:1px solid rgba(219,229,239,.96);border-radius:20px;padding:18px 18px 16px;margin:auto;box-shadow:0 12px 32px rgba(11,79,138,.16);animation:splashIn .7s ease both}
@@ -448,10 +436,11 @@ footer{
 .splash-start:hover{transform:translateY(-2px);background:#083e6d}.splash-start:active{transform:scale(.97)}
 .splash-footer{margin-top:18px;color:#64748b;font-size:11px}
 @keyframes splashIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes sigapSpin{to{transform:rotate(360deg)}}
 @keyframes textUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 @media(max-width:600px){
-  header{padding:6px 12px 8px}
-  .logo-sigap{width:44px;height:44px;margin-bottom:3px}
+  header{padding:5px 12px 6px}
+  .logo-sigap{width:40px;height:40px;margin-bottom:2px}
   .brand{font-size:25px}
   .sub{font-size:10px;max-width:320px}
   #splashSIGAP{padding:10px;align-items:flex-start}
@@ -466,6 +455,15 @@ footer{
   .splash-start{width:90%;padding:11px 18px}
   .splash-footer{margin-top:10px}
 }
+@media(min-width:900px){
+  #splashSIGAP{padding:18px}
+  .splash-box{width:min(500px,calc(100vw - 40px));padding:15px 20px 13px}
+  .splash-logo{width:48px;height:48px;margin-bottom:5px}
+  .splash-brand{font-size:28px}
+  .splash-title{font-size:27px;margin:12px 0 6px}
+  .splash-pantun{margin:10px auto 14px;padding:10px 14px}
+  .splash-footer{margin-top:12px}
+}
 @media(max-height:650px){#splashSIGAP{align-items:flex-start}.splash-box{margin-top:auto;margin-bottom:auto}}
 </style>
 </head>
@@ -475,6 +473,11 @@ footer{
 <!-- ===== LAYAR PEMBUKA SIGAP ===== -->
 <div id="splashSIGAP">
   <img src="assets/kantor-jakbar.jpg" class="splash-bg-logo" alt="">
+  <div id="splashLoading" role="status" aria-live="polite" style="display:none;position:absolute;inset:0;z-index:5;background:rgba(8,43,75,.48);color:#fff;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:24px;box-sizing:border-box;">
+    <div style="width:34px;height:34px;border:4px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:sigapSpin .8s linear infinite;margin-bottom:14px;"></div>
+    <strong style="font-size:20px;">SIGAP sedang mempersiapkan tampilan…</strong>
+    <span style="font-size:14px;margin-top:8px;">Mohon tunggu sebentar.</span>
+  </div>
   <div class="splash-box">
     <img src="assets/logo-sigap.jpg" class="splash-logo" alt="Logo SIGAP">
     <div class="splash-brand">SIGAP</div>
@@ -1290,12 +1293,30 @@ function render(q='', targetId='words'){
 
 function mulaiSIGAP(){
   const splash = document.getElementById("splashSIGAP");
-  splash.style.transition = "opacity .35s ease";
-  splash.style.opacity = "0";
-  setTimeout(() => {
-    splash.style.display = "none";
-    window.scrollTo(0,0);
-  }, 350);
+  const loading = document.getElementById("splashLoading");
+  const tombol = splash.querySelector(".splash-start");
+  if (!splash || !loading || splash.dataset.memulai === "ya") return;
+  splash.dataset.memulai = "ya";
+  if (tombol) tombol.disabled = true;
+  loading.style.display = "flex";
+
+  const foto = splash.querySelector(".splash-bg-logo");
+  const tungguFoto = foto && !foto.complete
+    ? new Promise(resolve => {
+        foto.addEventListener("load", resolve, {once:true});
+        foto.addEventListener("error", resolve, {once:true});
+      })
+    : Promise.resolve();
+  const jedaSingkat = new Promise(resolve => setTimeout(resolve, 2200));
+
+  Promise.all([tungguFoto, jedaSingkat]).then(() => {
+    splash.style.transition = "opacity .4s ease";
+    splash.style.opacity = "0";
+    setTimeout(() => {
+      splash.style.display = "none";
+      window.scrollTo(0,0);
+    }, 400);
+  });
 }
 
 let riwayatHalaman = [];
